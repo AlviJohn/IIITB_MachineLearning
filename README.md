@@ -1,2 +1,2 @@
 # IIITB_MachineLearning
-Codes from PGDML from IIITB
+Codes and resources from PGDML from IIITB
