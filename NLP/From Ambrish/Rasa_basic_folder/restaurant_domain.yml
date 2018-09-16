@@ -1,0 +1,81 @@
+slots:
+  location:
+    type: text
+  cuisine:
+    type: text
+  budget:
+    type: text
+  email:
+    type: text
+  budgetrange:
+    type: text
+
+entities:
+- location
+- cuisine
+- budget
+- email
+- budgetrange
+
+intents:
+ - greet
+ - affirm
+ - deny
+ - goodbye
+ - thankyou
+ - restaurant_search
+ - sendmail
+
+
+templates:
+  utter_greet:
+    - "hey there! How may i help you"
+    - "Hi, How can I help you!"
+    - "Hey, How is it going. How May I help you Today"
+  utter_goodbye:
+    - "goodbye :("
+    - "Bye-bye"
+  utter_default:
+    - "default message"
+  utter_ask_cuisine: 
+    - text: "what kind of cuisine would you like?"
+      buttons:
+      - title: "Chinese"
+        payload: "Chinese"
+      - title: "Mexican"
+        payload: "Mexican"
+      - title: "Italian"
+        payload: "Italian"
+      - title: "American"
+        payload: "American"
+      - title: "South Indian"
+        payload: "South Indian"
+      - title: "North Indian"
+        payload: "North Indian"
+  utter_ask_howcanhelp:
+    - "how can I help you?"
+  utter_ask_location:
+    - "Please let us know your location?"
+  utter_ask_budget:
+    - text: "What is your budget"
+      buttons:
+      - title: "less 300"
+        payload: "Lesser than Rs. 300"
+      - title: "300-700"
+        payload: "Rs. 300 to 700"
+      - title: "more 700"
+        payload: "More than 700"
+  utter_ask_sendemail:
+    - "Enter email to send details!"
+
+actions:
+- utter_greet
+- utter_goodbye
+- utter_default
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_cuisine
+- utter_ask_budget
+- utter_ask_sendemail
+- actions.ActionSearchRestaurants
+- actions.ActionSendEmail

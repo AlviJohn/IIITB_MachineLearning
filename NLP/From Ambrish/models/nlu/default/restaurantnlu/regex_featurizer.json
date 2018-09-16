@@ -1,0 +1,14 @@
+[
+    {
+        "name": "email",
+        "pattern": "\\S+@\\S+"
+    },
+    {
+        "name": "greet",
+        "pattern": "hey[^\\s]*"
+    },
+    {
+        "name": "zipcode",
+        "pattern": "[0-9]{6}"
+    }
+]

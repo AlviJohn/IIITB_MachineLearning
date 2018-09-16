@@ -1,0 +1,28 @@
+{
+  "action_fingerprints": {
+    "action_listen": {
+      "slots": [
+        "location",
+        "cuisine"
+      ]
+    },
+    "utter_goodbye": {
+      "slots": []
+    },
+    "action_restaurant": {
+      "slots": [
+        "location"
+      ]
+    }
+  },
+  "rasa_core": "0.10.4",
+  "max_histories": [
+    4,
+    5
+  ],
+  "ensemble_name": "rasa_core.policies.ensemble.SimplePolicyEnsemble",
+  "policy_names": [
+    "rasa_core.policies.memoization.MemoizationPolicy",
+    "rasa_core.policies.keras_policy.KerasPolicy"
+  ]
+}
