@@ -1,0 +1,36 @@
+ Write code to perform a left-right flip, followed by an up-down flip to the same image.
+
+image_fliplr = np.fliplr(image)
+image_final = np.flipud(image_fliplr)
+
+plot_image([image_final])
+
+ 
+
+2. Normalise the image between the 25th and 75th percentiles.
+
+norm3_image = image - np.percentile(image,25)/ np.percentile(image,75) - np.percentile(image,5)
+
+ 
+
+3. Perform a 90-degree rotation, and follow it up with a 4x zoom-in.
+
+# First, define the shifting transformations
+shift_x, shift_y = image.shape[0]/2, image.shape[1]/2
+matrix_to_topleft = tf.SimilarityTransform(translation=[-shift_x, -shift_y])
+matrix_to_center = tf.SimilarityTransform(translation=[shift_x, shift_y])
+
+# Then, perform rotation transform
+rot_transforms =  tf.AffineTransform(rotation=np.deg2rad(90))
+
+# Then, perform the scaling transform with 4X zoom-in
+scale_transforms = tf.AffineTransform(scale=(0.25, 0.25))
+
+# Add up the transforms
+rot_plus_scale_matrix = matrix_to_topleft + rot_transforms + scale_transforms + matrix_to_center
+
+# Finally, apply the added-up transformation 
+final_image = tf.warp(image, rot_plus_scale_matrix)
+
+# Plot the image
+plot_image([final_image])
